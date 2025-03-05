@@ -10,6 +10,7 @@ const getData = (dispatch) => {
   axios
     .get("http://localhost:8080/my", { withCredentials: true })
     .then((res) => {
+      console.log(res.data + "userInfo받음");
       dispatch({ type: "SET_USER_INFO", payload: res.data });
     })
     .catch((error) => console.log(error));
@@ -26,6 +27,7 @@ export default function HeaderLayout() {
 
   useEffect(() => {
     if (!userInfo) {
+      console.log("간다");
       getData(dispatch);
     }
   }, []);
