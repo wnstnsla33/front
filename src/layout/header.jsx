@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import LoginButton from "./LoginButton";
 import { Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 const naverLogin = () => {
   window.location.href = "http://localhost:8080/oauth2/authorization/naver";
 };

@@ -19,33 +19,28 @@ export default function PostWrite() {
     navigate("/");
   };
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-orange-100 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-orange-600 mb-4">게시글 작성</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-        {/* 제목 입력 */}
+    <div className="w-full min-h-screen mx-auto  p-12 bg-orange-100 rounded-lg shadow-xl">
+      <h2 className="text-3xl font-bold text-orange-600 mb-10">게시글 작성</h2>{" "}
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
         <input
           type="text"
           placeholder="제목을 입력하세요"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="p-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+          className="w-full p-4 text-lg border-2 border-orange-300 rounded-xl focus:ring-4 focus:ring-orange-500 outline-none"
           required
         />
-
-        {/* 내용 입력 */}
         <textarea
           placeholder="내용을 입력하세요"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          rows="5"
-          className="p-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+          rows="10"
+          className="w-full p-4 text-lg border-2 border-orange-300 rounded-xl focus:ring-4 focus:ring-orange-500 outline-none resize-y"
           required
         ></textarea>
-
-        {/* 버튼 */}
         <button
           type="submit"
-          className="bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition"
+          className="w-full py-3 px-6 bg-orange-500 text-white text-xl rounded-xl hover:bg-orange-600 transition-transform transform hover:scale-105"
         >
           게시글 작성
         </button>

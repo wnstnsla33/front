@@ -15,13 +15,24 @@ export default function AsideMenu() {
       </NavLink>
       <NavLink
         to="post"
+        end
         className={({ isActive }) =>
           isActive
             ? "block my-2 text-blue-500 text-xl no-underline hover:text-blue-500"
             : "block my-2 text-gray-800 text-xl no-underline hover:text-blue-500"
         }
       >
-        내 정보
+        게시판
+      </NavLink>
+      <NavLink
+        to="post/new"
+        className={({ isActive }) =>
+          isActive
+            ? "block my-2 text-blue-500 text-xl no-underline hover:text-blue-500"
+            : "block my-2 text-gray-800 text-xl no-underline hover:text-blue-500"
+        }
+      >
+        글 쓰기
       </NavLink>
     </aside>
   );
