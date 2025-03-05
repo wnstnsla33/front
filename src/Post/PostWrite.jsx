@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IsLogin } from "../layout/LoginButton";
 import axios from "axios";
 export default function PostWrite() {
   const [title, setTitle] = useState("");

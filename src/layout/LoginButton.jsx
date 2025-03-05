@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 export default function LoginButton({ children, clickEvent }) {
   return (
     <>
@@ -9,4 +10,8 @@ export default function LoginButton({ children, clickEvent }) {
       </button>
     </>
   );
+}
+export function IsLogin() {
+  const user = useSelector((state) => state.userInfo) || {};
+  return user;
 }

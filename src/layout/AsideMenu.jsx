@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-
 export default function AsideMenu() {
   return (
     <aside className="w-48 h-full bg-gray-100 p-5 shadow-md rounded-tr-lg rounded-br-lg ">

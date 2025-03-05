@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import PostButton from "./PostButton";
 import document from "../image/document.jpg";
-export function PostList({ postList }) {
+export function PostList({ postList, username }) {
+  const buttonAuth = (
+    <button className="inline-block py-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300 m-4">
+      삭제
+    </button>
+  );
+
   return (
     <div className="min-h-screen p-8 bg-orange-50">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-        {" "}
-        {/* 2그리드 레이아웃 */}
         {postList.map((post) => (
           <div
             key={post.postId}
@@ -14,15 +18,9 @@ export function PostList({ postList }) {
           >
             <h3 className="text-2xl font-bold text-orange-700 mb-4">
               {post.title}
-            </h3>{" "}
-            {/* 제목 스타일 */}
-            <p className="text-orange-800 mb-4 line-clamp-3">
-              {post.content}
-            </p>{" "}
-            {/* 내용 스타일 (3줄 제한) */}
+            </h3>
+
             <div className="space-y-2 text-orange-600 mb-4">
-              {" "}
-              {/* 메타 정보 스타일 */}
               <p>
                 <span className="font-semibold">작성자:</span> {post.userName}
               </p>
@@ -36,6 +34,7 @@ export function PostList({ postList }) {
             >
               자세히 보기
             </Link>
+            {username === post.userName ? buttonAuth : ""}
           </div>
         ))}
       </div>
@@ -46,7 +45,9 @@ export function NoPost() {
   return (
     <div className="flex flex-col justify-center items-center h-screen">
       <img className="mb-4" src={document} />
-      <PostButton>{"새 글쓰기"}</PostButton>
+      <PostButton style={"text-center  bg-yellow-500 rounded py-2 px-4"}>
+        {"새 글쓰기"}
+      </PostButton>
     </div>
   );
 }

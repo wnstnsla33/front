@@ -1,16 +1,16 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import LoginButton from "./LoginButton";
 import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 const naverLogin = () => {
   window.location.href = "http://localhost:8080/oauth2/authorization/naver";
 };
-const getData = (setUserInfo) => {
+const getData = (dispatch) => {
   axios
     .get("http://localhost:8080/my", { withCredentials: true })
     .then((res) => {
-      setUserInfo(res.data);
+      dispatch({ type: "SET_USER_INFO", payload: res.data });
     })
     .catch((error) => console.log(error));
 };
@@ -21,12 +21,12 @@ const logout = () => {
   window.location.href = "http://localhost:8080/logout";
 };
 export default function HeaderLayout() {
-  const [userInfo, setUserInfo] = useState(undefined);
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userInfo);
 
   useEffect(() => {
-    if (userInfo === undefined) {
-      console.log("현재널");
-      getData(setUserInfo);
+    if (!userInfo) {
+      getData(dispatch);
     }
   }, []);
   return (
@@ -44,14 +44,10 @@ export default function HeaderLayout() {
         <div className="flex space-x-4">
           <LoginButton
             clickEvent={
-              userInfo === undefined
-                ? () => naverLogin(setUserInfo)
-                : () => showDetailData(userInfo)
+              !userInfo ? () => naverLogin() : () => showDetailData(userInfo)
             }
           >
-            {userInfo === undefined
-              ? "네이버로그인"
-              : userInfo.name + "계정정보 확인"}
+            {!userInfo ? "네이버로그인" : userInfo.name + "계정정보 확인"}
           </LoginButton>
           <LoginButton clickEvent={logout}>로그아웃(아직 미구현)</LoginButton>
         </div>

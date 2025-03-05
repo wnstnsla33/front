@@ -20,15 +20,12 @@ export default function PostDetail() {
   }
 
   return (
-    <div className="min-h-screen p-8 bg-orange-50 flex flex-col">
-      {" "}
-      {/* 화면 전체 높이, 여백 추가, flex로 정렬 */}
+    <div className="h-screen p-8 bg-orange-50 flex flex-col">
       {/* 제목 및 메타 정보 */}
       <div className="max-w-4xl mx-auto w-full">
         <h3 className="text-4xl font-bold text-orange-700 mb-6">
           {detail.title}
-        </h3>{" "}
-        {/* 제목 크게 */}
+        </h3>
         <div className="space-y-2 text-orange-600">
           <p>
             <span className="font-semibold">작성자:</span> {detail.userName}
@@ -45,13 +42,29 @@ export default function PostDetail() {
           </p>
         </div>
       </div>
-      {/* 내용 (남은 공간 전체를 차지하도록 설정) */}
+
+      {/* 내용 영역 (화면 높이에 맞게 조정) */}
       <div className="max-w-4xl mx-auto w-full mt-8 flex-grow flex flex-col">
-        <div className="flex-grow bg-orange-100 p-6 rounded-lg shadow-inner">
-          {" "}
-          {/* 내용 배경색 및 스타일 */}
-          <p className="text-2xl text-orange-800">{detail.content}</p>{" "}
-          {/* 내용 크게 */}
+        <div
+          className="flex-grow bg-orange-100 p-6 rounded-lg shadow-inner overflow-y-auto"
+          style={{ maxHeight: "calc(100vh - 400px)" }} // 화면 높이에 맞게 조정
+        >
+          <p className="text-2xl text-orange-800 whitespace-pre-wrap">
+            {detail.content}
+          </p>
+        </div>
+
+        {/* 수정하기 버튼 */}
+        <div className="mt-6 text-right">
+          <button
+            className="inline-block py-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300"
+            onClick={() => {
+              // 수정하기 버튼 클릭 시 동작
+              alert("수정하기 기능 구현 예정");
+            }}
+          >
+            수정하기
+          </button>
         </div>
       </div>
     </div>
