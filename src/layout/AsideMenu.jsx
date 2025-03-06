@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import LoginPopup from "./LoginPopup";
+import PostButton from "../Post/PostButton";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 export default function AsideMenu() {
@@ -28,7 +28,16 @@ export default function AsideMenu() {
       >
         게시판
       </NavLink>
-      <NavLink
+      <PostButton
+        style={({ isActive }) =>
+          isActive
+            ? "block my-2 text-blue-500 text-xl no-underline hover:text-blue-500"
+            : "block my-2 text-gray-800 text-xl no-underline hover:text-blue-500"
+        }
+      >
+        새 글쓰기
+      </PostButton>
+      {/* <NavLink
         to="post/new"
         onClick={(e) => {
           if (!user || Object.keys(user).length === 0) {
@@ -44,7 +53,7 @@ export default function AsideMenu() {
       >
         글 쓰기
       </NavLink>
-      {ShowPopup && <LoginPopup setShowPopup={setShowPopup} />}
+      {ShowPopup && <LoginPopup setShowPopup={setShowPopup} />} */}
     </aside>
   );
 }

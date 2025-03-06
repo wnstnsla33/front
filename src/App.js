@@ -5,6 +5,7 @@ import AsideMenu from "./layout/AsideMenu";
 import Post from "./Post/Post";
 import PostWrite from "./Post/PostWrite";
 import PostDetail from "./Post/PostDetail";
+import PostUpdate from "./Post/PostUpdate";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,7 @@ const route = createBrowserRouter([
       { path: "/home", element: <MyPage /> },
       { path: "/post/new", element: <PostWrite /> },
       { path: "/post/:id", element: <PostDetail /> },
+      { path: "/post/update/:id", element: <PostUpdate /> },
     ],
   },
 ]);

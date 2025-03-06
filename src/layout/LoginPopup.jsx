@@ -3,7 +3,7 @@ export default function LoginPopup({ setShowPopup }) {
   const navigate = useNavigate();
 
   const handleConfirm = () => {
-    navigate("/post"); // 확인 버튼을 누르면 /post로 이동
+    navigate("/"); // 확인 버튼을 누르면 /post로 이동
     setShowPopup(false);
   };
 

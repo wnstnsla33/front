@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import PostButton from "./PostButton";
 import document from "../image/document.jpg";
-export function PostList({ postList, username }) {
-  const buttonAuth = (
-    <button className="inline-block py-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300 m-4">
-      삭제
-    </button>
-  );
-
+import { DeleteButton } from "./PostButton";
+export function PostList({ postList, username, refreshPost }) {
   return (
     <div className="min-h-screen p-8 bg-orange-50">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
@@ -34,7 +29,11 @@ export function PostList({ postList, username }) {
             >
               자세히 보기
             </Link>
-            {username === post.userName ? buttonAuth : ""}
+            {username === post.userName ? (
+              <DeleteButton refreshPost={refreshPost} id={post.postId} />
+            ) : (
+              ""
+            )}
           </div>
         ))}
       </div>

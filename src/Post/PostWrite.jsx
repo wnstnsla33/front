@@ -16,7 +16,7 @@ export default function PostWrite() {
         withCredentials: true,
       }
     );
-    navigate("/");
+    navigate("/post");
   };
   return (
     <div className="w-full min-h-screen mx-auto  p-12 bg-orange-100 rounded-lg shadow-xl">
